@@ -19,8 +19,11 @@ SQLite
 How to Use:
 
 Clone the repository to your local machine.
+
 Ensure you have Python and SQLite installed.
+
 Run the bakery_management.py script to start the bakery management system.
+
 Use the menu options to navigate through different functionalities such as adding products, processing orders, managing customers, and more.
 
 Author: OM GAJIPARA
