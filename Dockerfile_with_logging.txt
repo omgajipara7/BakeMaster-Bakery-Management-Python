@@ -1,0 +1,24 @@
+# Dockerfile with verbose pip install and enhanced error handling
+
+# Start with a base image
+FROM python:3.10
+
+# Set environment variables
+ENV KERNEL_PYTHON_PREFIX=/usr/local
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the requirements file into the container
+COPY requirements.txt .
+
+# Run pip install with verbose output and error handling
+RUN set -ex \
+    && ${KERNEL_PYTHON_PREFIX}/bin/pip install --no-cache-dir -r "requirements.txt" -vvv \
+    || { echo "Error: Pip installation failed"; cat ~/.pip/pip.log; exit 1; }
+
+# Copy the rest of the application code into the container
+COPY . .
+
+# Specify the command to run on container start
+CMD [ "python", "app.py" ]
